@@ -102,8 +102,16 @@
         const name = e.target.name.value;
         const email = e.target.email.value;
         
-        localStorage.setItem('Name',name);
-        localStorage.setItem('Email',email);
+        let myobj={ name:name,
+          email:email
+
+        };
+        
+        localStorage.setItem("myobj",JSON.stringify(myobj));
+        
+
+        // localStorage.setItem('Name',name);
+        // localStorage.setItem('Email',email);
 
 
        // Create new list item with user
@@ -122,6 +130,6 @@
        // Clear fields
        nameInput.value = '';
        emailInput.value = '';
-      console.log("code end");
+      
      }
    }
