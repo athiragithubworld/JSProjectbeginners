@@ -102,23 +102,25 @@
         const name = e.target.name.value;
         const email = e.target.email.value;
         
-        let myobj={ name:name,
+        const myobj={ name:name,
           email:email
 
         };
         
-        localStorage.setItem("myobj",JSON.stringify(myobj));
-        
-
+        localStorage.setItem(myobj.email,JSON.stringify(myobj));
         // localStorage.setItem('Name',name);
         // localStorage.setItem('Email',email);
 
+        // get the value from local storage and save it into the form
+        const obj=JSON.parse(localStorage.getItem(myobj.email));
 
+
+// -----------------------------------------------------------
        // Create new list item with user
        const li = document.createElement('li');
 
       // Add text node with input values
-       li.appendChild(document.createTextNode(`${nameInput.value}: ${emailInput.value}`));
+       li.appendChild(document.createTextNode(`${obj.name}: ${obj.email}`));
    
        // Add HTML
        // li.innerHTML = `<strong>${nameInput.value}</strong>e: ${emailInput.value}`;
@@ -126,7 +128,7 @@
        // Append to ul
        
        userList.appendChild(li);
-   
+
        // Clear fields
        nameInput.value = '';
        emailInput.value = '';
